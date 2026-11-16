@@ -3,7 +3,10 @@ import About from "./components/About";
 import Education from "./components/Education";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-/* import Services from "./components/Services"; */
+import Projects from "./components/Projects";
+import Services from "./components/Services";
+import TechStack from "./components/TechStack";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -12,7 +15,10 @@ function App() {
       <Hero />
       <About />
       <Education />
-{/*       <Services /> */}
+      <Services />
+      <Projects />
+      <TechStack />
+      <Contact />
     </>
   );
 }
