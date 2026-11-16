@@ -44,7 +44,7 @@ return (
           className="relative bg-[#161b22] border border-[#30363d] rounded-lg p-5 hover:border-gray-500 transition"
         >
           {/* Timeline Node Dot */}
-          <div className="absolute -left-[33px] top-6 w-4 h-4 rounded-full bg-[#0d1117] border-2 border-[#58a6ff]" />
+          <div className="absolute -left-8.25 top-6 w-4 h-4 rounded-full bg-[#0d1117] border-2 border-[#58a6ff]" />
 
           <span className="text-xs text-blue-400 font-semibold tracking-wide">
             {item.period}
