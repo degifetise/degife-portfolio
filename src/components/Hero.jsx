@@ -9,6 +9,7 @@ import {
   Mail,
   MessageSquare,
   ArrowRight,
+  CheckCircle,
 } from "lucide-react";
 export default function Hero() {
   const [profileImage, setProfileImage] = useState(null);
@@ -58,6 +59,12 @@ export default function Hero() {
     }
   };
 
+  const Credibility = [
+    "Delivered full-stack solutions for local & remote clients",
+    "Creator of <code>@degifetise/envdiff</code> (Open-Source)",
+    "Open-source contributor to apps live on Google Play Store",
+  ];
+
   return (
     <section
       id="overview"
@@ -93,8 +100,20 @@ export default function Hero() {
           </label>
         </div>
         <h1 className="text-3xl font-bold text-white">Degife Tise</h1>
-        <p className="text-gray-400 text-sm mt-1">Hawassa, Ethiopia</p>
+        <p className="text-gray-400 text-sm mt-1">
+          Hawassa, Ethiopia{" "}
+          <span className="text-emerald-400 text-xs">(Remote Ready)</span>{" "}
+        </p>
       </motion.div>
+
+      <div className="mt-6 w-full space-y-2.5 text-xs text-gray-300 bg-[#161b22] border border-[#30363d] p-3.5 rounded-lg">
+        {Credibility.map((item, index) => (
+          <div key={index} className="flex items-start gap-2">
+            <CheckCircle className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+            <span dangerouslySetInnerHTML={{ __html: item }}></span>
+          </div>
+        ))}
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
