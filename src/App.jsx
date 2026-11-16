@@ -15,8 +15,8 @@ function App() {
       <Hero />
       <About />
       <Education />
-      <Services />
       <Projects />
+      <Services />
       <TechStack />
       <Contact />
     </>

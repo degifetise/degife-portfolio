@@ -1,10 +1,7 @@
-import { GraduationCapIcon } from "lucide-react";
-
+import { GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default  function Education() {
-
-
 const education = [
   {
     title: "B.Sc. in Information Technology",
@@ -29,12 +26,13 @@ const education = [
 return (
   <section
     id="education"
-    className="max-w-6xl mx-auto px-4 py-1é border-t border-[#30363d]"
+    className="max-w-6xl mx-auto px-4 py-12 border-t border-[#30363d]"
   >
     <div className="flex items-center gap-3 mb-8">
-      <GraduationCapIcon className="w-7 h-7 text-blue-400" />
+      <GraduationCap className="w-7 h-7 text-blue-400" />
       <h2 className="text-2xl font-bold text-white">Education & Experience</h2>
     </div>
+
     <div className="space-y-6 border-l-2 border-[#30363d] ml-4 pl-6">
       {education.map((item, idx) => (
         <motion.div
@@ -45,7 +43,8 @@ return (
           transition={{ delay: idx * 0.1 }}
           className="relative bg-[#161b22] border border-[#30363d] rounded-lg p-5 hover:border-gray-500 transition"
         >
-          <div className="absolute -left-[33px] top-6 w-4 h-4 rounded-full bg-[#0d1117] border-2 border-[#58a6ff]" />
+          {/* Timeline Node Dot */}
+          <div className="absolute -left-8.25 top-6 w-4 h-4 rounded-full bg-[#0d1117] border-2 border-[#58a6ff]" />
 
           <span className="text-xs text-blue-400 font-semibold tracking-wide">
             {item.period}
@@ -60,6 +59,4 @@ return (
     </div>
   </section>
 );
-
-
 }
