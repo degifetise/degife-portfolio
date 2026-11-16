@@ -75,7 +75,7 @@ export default function About() {
             </div>
           </div>
           <p className="text-xs text-gray-500">
-            Active contributions across full-stack web engineering and
+            My Active contributions across full-stack web engineering and
             open-source repositories.
           </p>
         </div>
