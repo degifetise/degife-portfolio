@@ -2,21 +2,16 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import {
-  User,
-  Upload,
   Sparkles,
-  LucideGitBranch,
   Mail,
   MessageSquare,
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
 export default function Hero() {
-  const [profileImage, setProfileImage] = useState(null);
-
   const roles = [
-    "Junior Full-Stack Developer",
-    "UI/UX Designer",
+    "Full-Stack Developer",
+    "Open Source Contributor",
     "Building Scalable Web Apps",
   ];
 
@@ -51,14 +46,6 @@ export default function Hero() {
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, currentRoleIndex, typingSpeed, roles]);
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      setProfileImage(URL.createObjectURL(file));
-    }
-  };
-
   const Credibility = [
     "Delivered full-stack solutions for local & remote clients",
     "Creator of <code>@degifetise/envdiff</code> (Open-Source)",
@@ -78,26 +65,12 @@ export default function Hero() {
       >
         <div className="group relative cursor-pointer mb-6">
           <div className="w-40 h-40 rounded-full border-2 border-[#30363d] overflow-hidden bg-[#161b22] flex items-center justify-center shadow-xl">
-            {profileImage ? (
-              <img
-                src={profileImage}
-                alt="degife tise"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <User className="w-20 h-20 text-gray-500" />
-            )}
-          </div>
-          <label className="absolute inset-0 bg-black/60 rounded-full opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center text-xs text-white transition cursor-pointer">
-            <Upload className="w-5 h-5 mb-1" />
-            Upload Photo
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
+            <img
+              src="/profile.jpg"
+              alt="Degife Tise"
+              className="w-full h-full object-cover"
             />
-          </label>
+          </div>
         </div>
         <h1 className="text-3xl font-bold text-white">Degife Tise</h1>
         <p className="text-gray-400 text-sm mt-1">
@@ -131,6 +104,7 @@ export default function Hero() {
           <motion.span
             initial={{ opacity: [1, 0.5, 1] }}
             transition={{ repeat: Infinity, duration: 2 }}
+            className="text-emerald-400"
           >
             {displayedText}
           </motion.span>
@@ -191,7 +165,7 @@ export default function Hero() {
             rel="noreferrer"
             className="flex items-center gap-2 bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] px-4 py-2 rounded-md text-sm font-medium text-white transition"
           >
-            <LucideGitBranch />
+            Github
           </a>
           <a
             href="mailto:degifetise09@gmail.com"
