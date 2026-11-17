@@ -1,14 +1,60 @@
 import { useState } from "react";
-import { Mail, Send, MessageSquare, CheckCircle2 } from "lucide-react";
+import {
+  Mail,
+  Send,
+  MessageSquare,
+  CheckCircle2,
+  Loader2,
+} from "lucide-react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // Form state to capture inputs
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    // You can integrate EmailJS or Resend here easily
+    setLoading(true);
+    setError("");
+
+    // Replace these with your actual EmailJS credentials
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Template parameters matching your EmailJS template variables
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(serviceID, templateID, templateParams, publicKey)
+      .then((response) => {
+        setLoading(false);
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error("EmailJS Error:", err);
+        setError(
+          "Failed to send message. Please try again or reach out via WhatsApp.",
+        );
+      });
   };
 
   return (
@@ -59,7 +105,7 @@ export default function Contact() {
               rel="noreferrer"
               className="flex items-center gap-3 text-gray-300 hover:text-white bg-[#0d1117] border border-[#30363d] p-3 rounded-md transition"
             >
-             {/*  <Github className="w-5 h-5 text-gray-400" /> */}
+              <span>Github</span>
               <span>github.com/degifetise</span>
             </a>
           </div>
@@ -81,15 +127,25 @@ export default function Contact() {
               <h3 className="text-sm font-semibold text-white mb-2 uppercase tracking-wider">
                 Send a Direct Message
               </h3>
+
+              {error && (
+                <div className="p-3 bg-red-950/50 border border-red-500/50 rounded-md text-xs text-red-400">
+                  {error}
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-medium text-gray-400 mb-1">
                   Your Name
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   className="w-full bg-[#161b22] border border-[#30363d] rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
-                  placeholder="John Doe"
+                  placeholder="Your Full Name"
                 />
               </div>
               <div>
@@ -98,9 +154,12 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className="w-full bg-[#161b22] border border-[#30363d] rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
-                  placeholder="john@example.com"
+                  placeholder="youemail@example.com"
                 />
               </div>
               <div>
@@ -109,6 +168,9 @@ export default function Contact() {
                 </label>
                 <textarea
                   rows={4}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                   className="w-full bg-[#161b22] border border-[#30363d] rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
                   placeholder="Hello Degife, I'd like to discuss..."
@@ -116,9 +178,18 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#2ea043] hover:bg-[#2c974b] text-white font-medium py-2.5 px-4 rounded-md text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20"
+                disabled={loading}
+                className="w-full bg-[#2ea043] hover:bg-[#2c974b] text-white font-medium py-2.5 px-4 rounded-md text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20 disabled:opacity-50"
               >
-                <Send className="w-4 h-4" /> Send Message
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" /> Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" /> Send Message
+                  </>
+                )}
               </button>
             </form>
           )}
