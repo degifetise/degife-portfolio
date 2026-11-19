@@ -60,23 +60,23 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="max-w-6xl mx-auto px-4 py-12 border-t border-[#30363d]"
+      className="theme-border max-w-6xl mx-auto border-t px-4 py-12"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-[#161b22] border border-[#30363d] rounded-lg p-8 lg:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+        className="theme-card theme-border grid grid-cols-1 items-center gap-8 rounded-lg border p-8 lg:p-10 md:grid-cols-2"
       >
         <div>
-          <div className="inline-flex items-center gap-2 bg-[#21262d] border border-[#30363d] px-3 py-1 rounded-full text-xs text-emerald-400 font-medium mb-4">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />{" "}
+          <div className="theme-subtle theme-border theme-green mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium">
+            <span className="theme-green-bg h-2 w-2 animate-pulse rounded-full" />{" "}
             Available for Hire
           </div>
-          <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">
+          <h2 className="theme-text mb-4 text-3xl font-bold tracking-tight">
             Let's Build Something Together
           </h2>
-          <p className="text-gray-300 text-sm leading-relaxed mb-6">
+          <p className="theme-body mb-6 text-sm leading-relaxed">
             Whether you have a remote developer role, a freelance client
             project, or want to discuss full-stack solutions, my inbox and
             WhatsApp are always open.
@@ -87,23 +87,23 @@ export default function Contact() {
               href="https://wa.me/251924275434?text=Hi%20Degife,%20I%20want%20to%20discuss%20a%20project."
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-3 text-gray-300 hover:text-white bg-[#0d1117] border border-[#30363d] p-3 rounded-md transition"
+              className="theme-inset theme-border theme-body flex items-center gap-3 rounded-md border p-3 transition-colors hover:opacity-70"
             >
-              <MessageSquare className="w-5 h-5 text-emerald-400" />
+              <MessageSquare className="theme-green h-5 w-5" />
               <span>WhatsApp: +251 924 275 434</span>
             </a>
             <a
               href="mailto:degifetise09@gmail.com"
-              className="flex items-center gap-3 text-gray-300 hover:text-white bg-[#0d1117] border border-[#30363d] p-3 rounded-md transition"
+              className="theme-inset theme-border theme-body flex items-center gap-3 rounded-md border p-3 transition-colors hover:opacity-70"
             >
-              <Mail className="w-5 h-5 text-blue-400" />
+              <Mail className="theme-blue h-5 w-5" />
               <span>degifetise09@gmail.com</span>
             </a>
             <a
               href="https://github.com/degifetise"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-3 text-gray-300 hover:text-white bg-[#0d1117] border border-[#30363d] p-3 rounded-md transition"
+              className="theme-inset theme-border theme-body flex items-center gap-3 rounded-md border p-3 transition-colors hover:opacity-70"
             >
               <span>Github</span>
               <span>github.com/degifetise</span>
@@ -111,75 +111,78 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="bg-[#0d1117] border border-[#30363d] rounded-lg p-6">
+        <div className="theme-inset theme-border rounded-lg border p-6">
           {submitted ? (
             <div className="text-center py-12 space-y-3">
-              <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white">
+              <CheckCircle2 className="theme-green mx-auto h-12 w-12" />
+              <h3 className="theme-text text-lg font-bold">
                 Message Sent Successfully!
               </h3>
-              <p className="text-sm text-gray-400">
+              <p className="theme-muted text-sm">
                 Thank you for reaching out. I will get back to you soon.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <h3 className="text-sm font-semibold text-white mb-2 uppercase tracking-wider">
+              <h3 className="theme-text mb-2 text-sm font-semibold uppercase tracking-wider">
                 Send a Direct Message
               </h3>
 
               {error && (
-                <div className="p-3 bg-red-950/50 border border-red-500/50 rounded-md text-xs text-red-400">
+                <div role="alert" className="theme-red rounded-md border border-red-200 bg-red-50 p-3 text-xs dark:border-red-500/50 dark:bg-red-950/50">
                   {error}
                 </div>
               )}
 
               <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
+                <label htmlFor="contact-name" className="theme-muted mb-1 block text-xs font-medium">
                   Your Name
                 </label>
                 <input
                   type="text"
+                  id="contact-name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#161b22] border border-[#30363d] rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
+                  className="theme-subtle theme-border theme-text theme-placeholder w-full rounded-md border px-3 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                   placeholder="Your Full Name"
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
+                <label htmlFor="contact-email" className="theme-muted mb-1 block text-xs font-medium">
                   Your Email
                 </label>
                 <input
                   type="email"
+                  id="contact-email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#161b22] border border-[#30363d] rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
+                  className="theme-subtle theme-border theme-text theme-placeholder w-full rounded-md border px-3 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                   placeholder="youemail@example.com"
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
+                <label htmlFor="contact-message" className="theme-muted mb-1 block text-xs font-medium">
                   Message
                 </label>
                 <textarea
                   rows={4}
+                  id="contact-message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#161b22] border border-[#30363d] rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
+                  className="theme-subtle theme-border theme-text theme-placeholder w-full rounded-md border px-3 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                   placeholder="Hello Degife, I'd like to discuss..."
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#2ea043] hover:bg-[#2c974b] text-white font-medium py-2.5 px-4 rounded-md text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20 disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-2 rounded-md bg-[#166534] px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-emerald-900/20 transition-colors hover:bg-[#15803d] disabled:opacity-50"
               >
                 {loading ? (
                   <>

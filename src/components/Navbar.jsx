@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { LibraryBig, Menu, User, X } from "lucide-react";
+import { Menu, User, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,54 +21,57 @@ export default function Navbar() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 bg-[#161b22]/90 backdrop-blur border-b border-[#30363d]"
+      className="theme-card sticky top-0 z-50 border-b theme-border backdrop-blur"
     >
       <div className="max-w-6xl mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2.5">
-          <div className="p-1.5 bg-[#0d1117] border border-[#30363d] rounded-md text-white">
+          <div className="theme-inset theme-border theme-text rounded-md border p-1.5">
             <User className="h-5 w-5" />
           </div>
-          <span className="font-semibold text-white tracking-wide text-base">
+          <span className="theme-text text-base font-semibold tracking-wide">
             degifetise
           </span>
         </a>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-6 text-sm text-gray-300">
+        <div className="hidden md:flex items-center gap-6 text-sm theme-body">
           {navLinks.map((link, idx) => (
             <a
               key={idx}
               href={link.href}
-              className="hover:text-white transition"
+              className="theme-body transition-colors hover:opacity-70"
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-md bg-[#0d1117] border border-[#30363d] text-gray-300 hover:text-white focus:outline-none"
-          aria-label="Toggle Menu"
-        >
-          {mobileMenuOpen ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Menu className="h-5 w-5" />
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="theme-inset theme-border theme-body theme-hover rounded-md border p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 md:hidden"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#161b22] border-b border-[#30363d] px-4 py-4 flex flex-col gap-3 md:hidden shadow-xl">
+        <div className="theme-card theme-border absolute top-full left-0 flex w-full flex-col gap-3 border-b px-4 py-4 shadow-xl md:hidden">
           {navLinks.map((link, idx) => (
             <a
               key={idx}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-md text-sm text-gray-300 hover:bg-[#21262d] hover:text-white transition"
+              className="theme-body theme-hover rounded-md px-3 py-2 text-sm"
             >
               {link.name}
             </a>

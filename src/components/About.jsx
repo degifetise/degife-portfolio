@@ -5,25 +5,25 @@ export default function About() {
   return (
     <section
       id="about"
-      className="max-w-6xl mx-auto px-4 py-12 border-t border-[#30363d]"
+      className="theme-border max-w-6xl mx-auto border-t px-4 py-12"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }} // Fixed lowercase 'opacity'
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-[#161b22] border border-[#30363d] rounded-lg overflow-hidden shadow-sm"
+        className="theme-card theme-border overflow-hidden rounded-lg border shadow-sm"
       >
-        <div className="bg-[#21262d] px-4 py-3 border-b border-[#30363d] flex items-center justify-between text-sm text-gray-300">
+        <div className="theme-subtle theme-border theme-body flex items-center justify-between border-b px-4 py-3 text-sm">
           <div className="flex items-center gap-2">
-            <FolderGit2 className="w-4 h-4 text-blue-400" />
+            <FolderGit2 className="theme-blue h-4 w-4" />
             <span>degifetise</span>
           </div>
-          <span className="text-xs text-gray-400">Public Profile Overview</span>
+          <span className="theme-muted text-xs">Public Profile Overview</span>
         </div>
 
-        <div className="p-6 lg:p-8 space-y-6 text-gray-300 leading-relaxed">
+        <div className="theme-body space-y-6 p-6 leading-relaxed lg:p-8">
           <div>
-            <h3 className="text-xl font-bold text-white mb-2">
+            <h3 className="theme-text mb-2 text-xl font-bold">
               👋 Welcome to my developer space
             </h3>
             <p className="mb-3">
@@ -43,16 +43,16 @@ export default function About() {
             </p>
           </div>
 
-          <div className="bg-[#0d1117] border border-[#30363d] rounded-lg p-4 overflow-x-auto">
-            <div className="flex justify-between items-center mb-3 text-xs text-gray-400">
-              <span className="font-semibold text-white">
+          <div className="theme-inset theme-border overflow-x-auto rounded-lg border p-4">
+            <div className="theme-muted mb-3 flex items-center justify-between text-xs">
+              <span className="theme-text font-semibold">
                 Live GitHub Contribution Activity
               </span>
               <a
                 href="https://github.com/degifetise"
                 target="_blank"
                 rel="noreferrer"
-                className="text-blue-400 hover:underline"
+                className="theme-link hover:underline"
               >
                 @degifetise ↗
               </a>
@@ -60,21 +60,26 @@ export default function About() {
 
             <div className="w-full flex justify-center py-2">
               <img
+                src="https://github-readme-activity-graph.vercel.app/graph?username=degifetise&theme=github&hide_border=true&color=0969da&bg_color=ffffff&line=1f6feb&point=1a7f37&area=true&area_color=2da44e"
+                alt="My Real-Time GitHub Activity Graph"
+                className="w-full max-w-4xl rounded object-contain dark:hidden"
+              />
+              <img
                 src="https://github-readme-activity-graph.vercel.app/graph?username=degifetise&theme=github-dark&hide_border=true&color=39d353&bg_color=0d1117&line=58a6ff&point=39d353&area=true&area_color=238636"
                 alt="My Real-Time GitHub Activity Graph"
-                className="w-full max-w-4xl rounded object-contain"
+                className="hidden w-full max-w-4xl rounded object-contain dark:block"
               />
             </div>
-            <div className="flex justify-between items-center mt-3 text-[11px] text-gray-400">
+            <div className="theme-muted mt-3 flex items-center justify-between text-[11px]">
               <span>
                 Automatically syncs with my public GitHub commits & activity
               </span>
-              <span className="text-emerald-400 font-medium">
+              <span className="theme-green font-medium">
                 ● Live syncing
               </span>
             </div>
           </div>
-          <p className="text-xs text-gray-500">
+          <p className="theme-muted text-xs">
             My Active contributions across full-stack web engineering and
             open-source repositories.
           </p>
