@@ -26,14 +26,14 @@ const education = [
 return (
   <section
     id="education"
-    className="max-w-6xl mx-auto px-4 py-12 border-t border-[#30363d]"
+    className="theme-border max-w-6xl mx-auto border-t px-4 py-12"
   >
     <div className="flex items-center gap-3 mb-8">
-      <GraduationCap className="w-7 h-7 text-blue-400" />
-      <h2 className="text-2xl font-bold text-white">Education & Experience</h2>
+      <GraduationCap className="theme-blue h-7 w-7" />
+      <h2 className="theme-text text-2xl font-bold">Education & Experience</h2>
     </div>
 
-    <div className="space-y-6 border-l-2 border-[#30363d] ml-4 pl-6">
+    <div className="theme-border ml-4 space-y-6 border-l-2 pl-6">
       {education.map((item, idx) => (
         <motion.div
           key={idx}
@@ -41,17 +41,17 @@ return (
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: idx * 0.1 }}
-          className="relative bg-[#161b22] border border-[#30363d] rounded-lg p-5 hover:border-gray-500 transition"
+          className="theme-card theme-border relative rounded-lg border p-5 transition-colors hover:opacity-90"
         >
           {/* Timeline Node Dot */}
-          <div className="absolute -left-8.25 top-6 w-4 h-4 rounded-full bg-[#0d1117] border-2 border-[#58a6ff]" />
+          <div className="theme-inset absolute -left-8.25 top-6 h-4 w-4 rounded-full border-2 border-blue-500" />
 
-          <span className="text-xs text-blue-400 font-semibold tracking-wide">
+          <span className="theme-blue text-xs font-semibold tracking-wide">
             {item.period}
           </span>
-          <h3 className="text-lg font-bold text-white mt-1">{item.title}</h3>
-          <p className="text-sm font-medium text-emerald-400">{item.org}</p>
-          <p className="text-sm text-gray-300 mt-2 leading-relaxed">
+          <h3 className="theme-text mt-1 text-lg font-bold">{item.title}</h3>
+          <p className="theme-green text-sm font-medium">{item.org}</p>
+          <p className="theme-body mt-2 text-sm leading-relaxed">
             {item.desc}
           </p>
         </motion.div>

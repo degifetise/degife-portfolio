@@ -1,12 +1,11 @@
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d1117] border-t border-[#30363d] py-8 text-xs text-gray-400">
+    <footer className="theme-page theme-border theme-muted border-t py-8 text-xs">
       <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="flex items-center gap-1.5">
           <span>
-            © 2026 Degife Tise. Built with React, Tailwind CSS, & GitHub Dark
-            Aesthetics.
+            © 2026 Degife Tise.
           </span>
         </p>
 
@@ -15,13 +14,12 @@ export default function Footer() {
             href="https://github.com/degifetise"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-white transition flex items-center gap-1.5"
+            className="theme-body flex items-center gap-1.5 transition-colors hover:opacity-70"
           >
            <span>Github</span>
-            <span>@degifetise</span>
           </a>
-          <span className="text-[#30363d]">•</span>
-          <span className="text-gray-400">Hawassa, Ethiopia</span>
+          <span className="theme-border"></span>
+          <span>Hawassa, Ethiopia</span>
         </div>
       </div>
     </footer>

@@ -1,9 +1,164 @@
 @import "tailwindcss";
 
-body {
-  background-color: #0d1117;
-  color: #c9d1d9;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --page: #f8fafc;
+    --surface: #ffffff;
+    --surface-subtle: #f1f5f9;
+    --surface-inset: #f8fafc;
+    --text-primary: #0f172a;
+    --text-body: #475569;
+    --text-muted: #475569;
+    --border: #e2e8f0;
+    --accent-blue: #1d4ed8;
+    --accent-green: #047857;
+    --accent-purple: #7e22ce;
+    --accent-amber: #b45309;
+    --accent-red: #b91c1c;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --page: #0d1117;
+    --surface: #161b22;
+    --surface-subtle: #21262d;
+    --surface-inset: #0d1117;
+    --text-primary: #e6edf3;
+    --text-body: #c9d1d9;
+    --text-muted: #8b949e;
+    --border: #30363d;
+    --accent-blue: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-purple: #bc8cff;
+    --accent-amber: #e3b341;
+    --accent-red: #ff7b72;
+  }
+
+  html {
+    background-color: var(--page);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--page);
+    color: var(--text-body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  html.dark body {
+    background-color: var(--page);
+    color: var(--text-body);
+  }
+}
+
+@layer components {
+  .theme-page {
+    background-color: var(--page);
+  }
+
+  .theme-card {
+    background-color: var(--surface);
+  }
+
+  .theme-subtle {
+    background-color: var(--surface-subtle);
+  }
+
+  .theme-inset {
+    background-color: var(--surface-inset);
+  }
+
+  .theme-text {
+    color: var(--text-primary);
+  }
+
+  .theme-body {
+    color: var(--text-body);
+  }
+
+  .theme-muted {
+    color: var(--text-muted);
+  }
+
+  .theme-border {
+    border-color: var(--border);
+  }
+
+  .theme-hover:hover {
+    background-color: var(--surface-subtle);
+    color: var(--text-primary);
+  }
+
+  .theme-blue {
+    color: var(--accent-blue);
+  }
+
+  .theme-green {
+    color: var(--accent-green);
+  }
+
+  .theme-green-bg {
+    background-color: var(--accent-green);
+  }
+
+  .theme-purple {
+    color: var(--accent-purple);
+  }
+
+  .theme-amber {
+    color: var(--accent-amber);
+  }
+
+  .theme-red {
+    color: var(--accent-red);
+  }
+
+  .theme-link {
+    color: var(--accent-blue);
+  }
+
+  .theme-blue-border {
+    border-color: color-mix(in srgb, var(--accent-blue) 30%, transparent);
+  }
+
+  .theme-green-border {
+    border-color: color-mix(in srgb, var(--accent-green) 30%, transparent);
+  }
+
+  .theme-purple-border {
+    border-color: color-mix(in srgb, var(--accent-purple) 30%, transparent);
+  }
+
+  .theme-amber-border {
+    border-color: color-mix(in srgb, var(--accent-amber) 30%, transparent);
+  }
+
+  .theme-card,
+  .theme-subtle,
+  .theme-inset,
+  .theme-text,
+  .theme-body,
+  .theme-muted,
+  .theme-border,
+  .theme-blue,
+  .theme-green,
+  .theme-purple,
+  .theme-amber,
+  .theme-red {
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+
+  .theme-hover,
+  .theme-link {
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  .theme-placeholder::placeholder {
+    color: var(--text-muted);
+  }
 }

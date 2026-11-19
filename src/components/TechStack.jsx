@@ -15,7 +15,7 @@ export default function TechStack() {
         "Lucide React",
         "Framer Motion",
       ],
-      color: "border-blue-500/30 text-blue-400",
+      color: "theme-blue-border theme-blue",
     },
     {
       title: "Backend & Architecture",
@@ -28,7 +28,7 @@ export default function TechStack() {
         "Serverless Functions",
         "Authentication & RBAC",
       ],
-      color: "border-emerald-500/30 text-emerald-400",
+      color: "theme-green-border theme-green",
     },
     {
       title: "Databases & Storage",
@@ -41,7 +41,7 @@ export default function TechStack() {
         "Database Modeling",
         "Row Level Security (RLS)",
       ],
-      color: "border-purple-500/30 text-purple-400",
+      color: "theme-purple-border theme-purple",
     },
     {
       title: "Tools & Deployment",
@@ -54,18 +54,18 @@ export default function TechStack() {
         "Postman & Axios",
         "npm Package Publishing",
       ],
-      color: "border-amber-500/30 text-amber-400",
+      color: "theme-amber-border theme-amber",
     },
   ];
 
   return (
     <section
       id="tech"
-      className="max-w-6xl mx-auto px-4 py-12 border-t border-[#30363d]"
+      className="theme-border max-w-6xl mx-auto border-t px-4 py-12"
     >
       <div className="flex items-center gap-3 mb-8">
-        <Cpu className="w-7 h-7 text-amber-400" />
-        <h2 className="text-2xl font-bold text-white">Tech Stack & Tools</h2>
+        <Cpu className="theme-amber h-7 w-7" />
+        <h2 className="theme-text text-2xl font-bold">Tech Stack & Tools</h2>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -76,15 +76,15 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className={`bg-[#161b22] border rounded-lg p-5 ${cat.color} hover:border-gray-500 transition`}
+            className={`theme-card theme-border rounded-lg border p-5 ${cat.color} transition-colors hover:opacity-90`}
           >
-            <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wider pb-2 border-b border-[#30363d]">
+            <h3 className="theme-text theme-border mb-4 border-b pb-2 text-sm font-bold uppercase tracking-wider">
               {cat.title}
             </h3>
-            <ul className="space-y-2.5 text-sm text-gray-300">
+            <ul className="theme-body space-y-2.5 text-sm">
               {cat.skills.map((skill, sIdx) => (
                 <li key={sIdx} className="flex items-center gap-2">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle className="theme-green h-3.5 w-3.5 shrink-0" />
                   <span>{skill}</span>
                 </li>
               ))}
